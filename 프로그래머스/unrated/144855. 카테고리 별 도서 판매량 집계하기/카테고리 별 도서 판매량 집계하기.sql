@@ -1,8 +1,7 @@
--- 코드를 입력하세요
-select b.CATEGORY, sum(bs.SALES) as "TOTAL_SALES"
+select b.CATEGORY , sum(s.SALES) as TOTAL_SALES
 from BOOK b
-join BOOK_SALES bs
-on b.BOOK_ID = bs.BOOK_ID
-where bs.SALES_DATE like "%2022-01%"
+join BOOK_SALES s
+on b.BOOK_ID = s.BOOK_ID
+where date_format(s.SALES_DATE, "%Y-%m-%d") like "2022-01%"
 group by b.CATEGORY
 order by b.CATEGORY
