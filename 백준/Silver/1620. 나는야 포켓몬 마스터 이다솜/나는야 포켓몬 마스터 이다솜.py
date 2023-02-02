@@ -19,13 +19,13 @@ answer = []
 for i in range(M):
     S = sys.stdin.readline().rstrip()
     if(S.isdigit()): # S가 숫자인경우 pDic 사용
-        try:
+        try: # 포켓몬 도감 이름 맨 뒤글자가 대문자인 경우
             print(pDicRev[S + ","])
-        except:
+        except: # 포켓몬 도감 이름 맨 뒷글자가 소문자인 경우
             print(pDicRev[int(S)])
     else: # S가 문자인경우 pDicRev 사용
         num = pDic[S]  
-        try:
+        try: # 포켓몬 도감 이름 맨 뒤글자가 대문자인 경우
             print(int(num.rstrip(",")))
-        except:
+        except: # 포켓몬 도감 이름 맨 뒷글자가 소문자인 경우
             print(int(num)) 
