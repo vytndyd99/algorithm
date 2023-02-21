@@ -2,15 +2,15 @@ import sys
 
 N = int(sys.stdin.readline())
 
-arr = [] # 단어 리스트
+words = []
 
 for i in range(N):
-    S = sys.stdin.readline().rstrip()
-    arr.append((S,len(S)))
+    word = sys.stdin.readline().rstrip()
+    words.append(word)
 
-arr = list(set(arr))
+words = list(set(words))
 
-arr.sort(key = lambda x : (x[1], x[0]))
+words.sort(key = lambda x : (len(x), x))
 
-for arr_key, arr_value in arr:
-    print(arr_key)
+for s in words:
+    print(s)
