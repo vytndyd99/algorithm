@@ -2,14 +2,13 @@ import sys
 
 N = int(sys.stdin.readline())
 
-arr = []
+info = []
 
 for i in range(N):
-    age, name = map(str, sys.stdin.readline().split(" "))
-    age = int(age)
-    arr.append((age, name.rstrip(), i)) # i 는 가입순서를 의미
+    regi = sys.stdin.readline().rstrip().split(" ")
+    info.append((int(regi[0]), regi[1], i)) # 나이, 이름, 가입인덱스
 
-arr.sort(key = lambda x : (x[0], x[2])) # 조합순서 첫번째 나이순, 두번째 가입순
+info.sort(key = lambda x : (x[0], x[2]))
 
-for s in arr:
+for s in info:
     print(s[0], s[1])
