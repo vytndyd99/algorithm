@@ -3,14 +3,17 @@ import math
 
 N = int(sys.stdin.readline())
 
-facNum = math.factorial(N)
+count = 0
 
-count = 0 # 0의 개수
+factN = str(math.factorial(N))
 
-for i in range(len(str(facNum)) - 1, -1, -1):
-    if(str(facNum)[i] == "0"):
+idx = len(factN) - 1
+
+while(True):
+    if(factN[idx] == "0"):
         count += 1
-    else:
-        break
+        idx -= 1
+        continue
+    break
 
 print(count)
