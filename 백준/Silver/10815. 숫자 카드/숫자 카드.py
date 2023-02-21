@@ -1,30 +1,20 @@
 import sys
 
-def istrue(n_list, m_list, i):
-    firstIdx = 0
-    lastIdx = len(n_list) - 1
-    while(firstIdx <= lastIdx):
-        midInx = (firstIdx + lastIdx) // 2
-        if(m_list[i] == n_list[midInx]):
-            return 1
-        elif(m_list[i] < n_list[midInx]):
-            lastIdx = midInx - 1
-        else:
-            firstIdx = midInx + 1
-    return 0
-
 N = int(sys.stdin.readline())
 
-n_list = list(map(int, sys.stdin.readline().split()))
+checkNum = list(map(int, sys.stdin.readline().split(" ")))
 
 M = int(sys.stdin.readline())
 
-m_list = list(map(int, sys.stdin.readline().split()))
+nums = list(map(int, sys.stdin.readline().split(" ")))
 
-n_list.sort()
+dic = {}
 
-for i in range(M):
-    if(istrue(n_list, m_list, i)):
-        print(1, end=" ")
-    else:
+for s in checkNum:
+    dic[s] = 1
+
+for s in nums:
+    try:
+        print(dic[s], end =" ")
+    except:
         print(0, end=" ")
