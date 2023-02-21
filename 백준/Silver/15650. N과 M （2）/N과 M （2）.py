@@ -2,20 +2,20 @@ import sys
 
 N, M = map(int, sys.stdin.readline().split(" "))
 
-visitedArr = [False for i in range(N + 1)]
+visited = [False for i in range(N + 1)]
 
 answer = []
 
-def back(arr, depth, start):
-    if(depth == M):
+def DFS(deep, start):
+    if(deep == M):
         print(" ".join(map(str, answer)))
-        return 
+        return
     for i in range(start, N + 1):
-        if(arr[i] != True):
+        if(visited[i] == False):
+            visited[i] = True
             answer.append(i)
-            arr[i] = True
-            back(arr, depth + 1, i + 1)
-            arr[i] = False
+            DFS(deep + 1, i + 1)
             answer.pop()
+            visited[i] = False
 
-back(visitedArr, 0, 1)
+DFS(0, 1)
