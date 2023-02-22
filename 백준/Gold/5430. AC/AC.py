@@ -1,47 +1,46 @@
 import sys
+import collections
 
 T = int(sys.stdin.readline())
 
 for i in range(T):
-    ans = True # error의 여부
-    flagReverse = 0 # 뒤집기 카운트
     p = sys.stdin.readline().rstrip()
     n = int(sys.stdin.readline())
-    arr = sys.stdin.readline().rstrip()
-    # 주어진 arr값을 정수형 배열로 변경하는 과정
-    if(n == 0): # n값이 0이면 빈배열 선언
-        arr = []
-    else: 
-        arr = arr.strip("[""]")
-        arr = arr.split(",")
-        for i in range(len(arr)):
-            arr[i] = int(arr[i])
-    for j in range(len(p)):
-        if(p[j] == "D"): # D함수 해결과정
-            if(len(arr) == 0): # 만약 배열길이가 0이면
-                ans = False # ans 거짓을 반환
+    nums = sys.stdin.readline().rstrip()
+    nums = nums.strip("[]")
+
+    # 덱의 원소가 아무것도 없는지 확인
+    if(len(nums) == 0):
+        nums = []
+    else:
+        nums = list(map(int, nums.split(",")))
+
+    nums = collections.deque(nums)
+    R = 0 # 뒤집기 횟수
+    errorFlag = False # 에러인지 아닌지 확인
+    startIdx = 0
+    for s in p:
+        if(s == "R"):
+            R += 1
+            if(startIdx == 0):
+                startIdx = len(nums) - 1
+            else:
+                startIdx = 0
+        elif(s == "D"):
+            if(len(nums) == 0):
+                errorFlag = True
                 break
             else:
-                if(flagReverse % 2 == 0): # 리버스 실행횟수가 홀수이면 뒤에서부터, 짝수이면 앞에서부터 삭제
-                    del arr[0]
+                if(startIdx == 0):
+                    nums.popleft()
                 else:
-                    del arr[len(arr) - 1]
-        else:
-            flagReverse += 1
-    if(ans): # 리버스는 홀수번은 1번만, 짝수번은 실행 x 시간복잡도를 줄이기 위해
-        if(flagReverse % 2 == 1):
-            arr.reverse()
-        if(len(arr) == 0):
-            print("[]")
-        elif(len(arr) == 1):
-            print("[%d]" % arr[0])
-        else:
-            for i in range(len(arr)):
-                if(i == 0):
-                    print("[%d," % arr[i], end="")
-                elif(i == len(arr) - 1):
-                    print("%d]" % arr[i])
-                else:
-                    print("%d," % arr[i], end="")
-    else:
+                    nums.pop()
+                    startIdx -= 1
+    if(errorFlag):
         print("error")
+    else:
+        if(R % 2 == 0):
+            print("[" + ",".join(map(str, nums))  + "]")
+        else:
+            nums.reverse()
+            print("[" + ",".join(map(str, nums))  + "]")
