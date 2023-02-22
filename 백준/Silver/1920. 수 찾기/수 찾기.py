@@ -2,25 +2,27 @@ import sys
 
 N = int(sys.stdin.readline())
 
-list_A = list(map(int, sys.stdin.readline().split()))
-
-list_A.sort()
+Nnums = list(map(int, sys.stdin.readline().split(" ")))
 
 M = int(sys.stdin.readline())
 
-list_B = list(map(int, sys.stdin.readline().split()))
+Mnums = list(map(int, sys.stdin.readline().split(" ")))
 
-for i in range(M):
-    firstIdx = 0
-    lastIdx = len(list_A) - 1
-    while(firstIdx <= lastIdx):
-        midIdx = (firstIdx + lastIdx) // 2
-        if(list_B[i] == list_A[midIdx]):
-            print(1)
-            break
-        elif(list_B[i] < list_A[midIdx]):
-            lastIdx = midIdx - 1
-        else:
-            firstIdx = midIdx + 1
-    if(firstIdx > lastIdx):
-        print(0)
+Nnums.sort()
+
+def binaryFind(arr, findNum):
+    startIdx = 0
+    endIdx = len(arr) - 1
+    while(startIdx <= endIdx):
+        midIdx = (startIdx + endIdx) // 2
+        if(arr[midIdx] == findNum):
+            return 1
+        if(findNum < arr[midIdx]):
+            endIdx = midIdx - 1
+        elif(findNum > arr[midIdx]):
+            startIdx = midIdx + 1
+    return 0
+
+
+for s in Mnums:
+    print(binaryFind(Nnums, s))
