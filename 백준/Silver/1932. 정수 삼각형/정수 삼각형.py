@@ -1,26 +1,24 @@
 import sys
 
-# 각 길이의 값을 배열에 집어넣는 과정
+n = int(sys.stdin.readline())
 
-N = int(sys.stdin.readline())
+nums = []
 
-lenArr = [[0 for j in range(i + 1)] for i in range((N))]
+for i in range(n):
+    num = list(map(int, sys.stdin.readline().split(" ")))
+    nums.append(num)
 
-for i in range(N):
-    S = list(map(int, sys.stdin.readline().split(" ")))
-    for j in range(len(lenArr[i])):
-        lenArr[i][j] = S[j]
+numSum = [[nums[0][0]]]
 
-for i in range(1, N): # 첫번째줄(0번째 줄)은 선택할것이 없기에 넘기기
-    for j in range(len(lenArr[i])):
-        if(j == 0):
-            # 여기서는 왼쪽 값만 더하는 경우
-            lenArr[i][j] = lenArr[i - 1][j] + lenArr[i][j]
-        elif(j == len(lenArr[i]) - 1):
-            # 여기서는 오른쪽 끝값만 더하는 경우인데, i - 1 번째 길이는 i번째보다 인덱스가 하나 적기에 lenArr[i - 1][j - 1]을 이용
-            lenArr[i][j] = lenArr[i - 1][j - 1] + lenArr[i][j]
-        else:
-            # 여기서는 왼쪽, 오른쪽 끝도 아닌경우이기에 i - 1 번째 줄의 값들중 양쪽 값들을 비교하여 큰 값을 더하는 규칙을 이용
-            lenArr[i][j] = max(lenArr[i - 1][j - 1], lenArr[i - 1][j]) + lenArr[i][j]
+for i in range(1, n):
+    sumNums = [] # 합의 리스트
+    for j in range(len(nums[i])):
+        if(j == 0): # 왼쪽 끝에 있는 경우
+            sumNums.append(numSum[i - 1][j] + nums[i][j])
+        elif(j == len(nums[i]) - 1): # 오른쪽 끝에 있는 경우
+            sumNums.append(numSum[i - 1][j - 1] + nums[i][j])
+        else: # 왼쪽과 오른쪽 끝 이 아닌 경우
+            sumNums.append(max(numSum[i - 1][j - 1], numSum[i - 1][j]) + nums[i][j])
+    numSum.append(sumNums)
 
-print(max(lenArr[N - 1])) # 합계의 가장 큰 값을 출력
+print(max(numSum[n - 1]))
