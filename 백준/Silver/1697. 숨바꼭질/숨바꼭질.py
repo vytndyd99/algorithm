@@ -3,19 +3,20 @@ import collections
 
 N, K = map(int, sys.stdin.readline().split(" "))
 
-answers= [0 for i in range(100001)]
+arr = [0 for i in range(100001)]
 
-def BFS(N):
-    q = collections.deque([N])
-    while(q):
-        dot = q.popleft()
-        if(dot == K):
+def BFS(start):
+    q = collections.deque([start])
+    while q:
+        Dot = q.popleft()
+        if(Dot == K):
             break
-        for i in (dot - 1, dot + 1, dot * 2):
-            if(i >= 0 and i <= 100000 and answers[i] == 0):
-                answers[i] = answers[dot] + 1
-                q.append(i)
-
+        for s in (Dot - 1, Dot + 1, 2 * Dot):
+            if(s >= 0 and s < 100001):
+                if(arr[s] == 0):
+                    arr[s] = arr[Dot] + 1
+                    q.append(s)
 
 BFS(N)
-print(answers[K])
+
+print(arr[K])
