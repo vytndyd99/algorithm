@@ -8,6 +8,6 @@ s = sys.stdin.readline().rstrip()
 sumNum = 0
 
 for i in range(len(s)):
-    sumNum += (ord(s[i]) - 96) * (int(math.pow(31, i)) % 1234567891)
+    sumNum += (ord(s[i]) - 96) * int(math.pow(31, i)) 
 
-print(sumNum)
+print(sumNum % 1234567891)
