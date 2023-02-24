@@ -1,4 +1,4 @@
 -- 코드를 입력하세요
-SELECT FLAVOR
+select FLAVOR
 from FIRST_HALF
-order by FIRST_HALF.TOTAL_ORDER desc, FIRST_HALF.SHIPMENT_ID
+order by TOTAL_ORDER desc, SHIPMENT_ID
