@@ -5,3 +5,4 @@ on i.ANIMAL_ID = o.ANIMAL_ID
 where o.ANIMAL_ID is null
 order by i.DATETIME
 limit 3
+#연습용
