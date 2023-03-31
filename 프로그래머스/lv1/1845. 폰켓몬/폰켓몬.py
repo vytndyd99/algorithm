@@ -10,3 +10,5 @@ def solution(nums):
     else:
         answer = numsLen // 2
     return answer
+
+# 연습용
