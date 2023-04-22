@@ -3,4 +3,4 @@ select HISTORY_ID, CAR_ID, date_format(START_DATE, "%Y-%m-%d") as START_DATE, da
 from CAR_RENTAL_COMPANY_RENTAL_HISTORY
 where START_DATE like "2022-09%"
 order by HISTORY_ID desc
-#연습용중
+#연습용
