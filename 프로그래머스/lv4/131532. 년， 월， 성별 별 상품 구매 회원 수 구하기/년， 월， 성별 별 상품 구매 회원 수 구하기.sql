@@ -5,4 +5,4 @@ on u.USER_ID = o.USER_ID
 group by YEAR, MONTH, u.GENDER
 having gender is not null
 order by YEAR, MONTH, GENDER
-#ㅇㅇ
+#연습중
