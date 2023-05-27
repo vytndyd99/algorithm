@@ -2,4 +2,4 @@
 select count(distinct NAME) as count
 from ANIMAL_INS
 
-# 연습용
+# 연습용중
