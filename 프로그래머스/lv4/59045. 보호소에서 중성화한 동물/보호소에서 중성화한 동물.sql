@@ -4,3 +4,4 @@ join ANIMAL_OUTS o
 on i.ANIMAL_ID = o.ANIMAL_ID
 where i.SEX_UPON_INTAKE != o.SEX_UPON_OUTCOME
 order by o.ANIMAL_ID
+#연습용
