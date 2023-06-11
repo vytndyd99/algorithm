@@ -4,3 +4,4 @@ right outer join ANIMAL_OUTS o
 on i.ANIMAL_ID = o.ANIMAL_ID
 where i.ANIMAL_ID is null
 order by o.ANIMAL_ID
+#연습중중
