@@ -4,4 +4,4 @@ join AUTHOR a
 on b.AUTHOR_ID = a.AUTHOR_ID
 where b.CATEGORY = "경제"
 order by PUBLISHED_DATE
-#연습중입니다
+#연습중
