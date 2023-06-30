@@ -14,6 +14,7 @@ public class Solution {
             if(N % i == 0) {
                 list.add(i);
                 list.add(N / i);
+                // list에 넣기
             }
         }
 
