@@ -6,4 +6,4 @@ join DOCTOR d
 on a.MDDR_ID = d.DR_ID
 where APNT_YMD like "2022-04-13%" and a.MCDP_CD = "CS" and a.APNT_CNCL_YN ="N"
 order by a.APNT_YMD
-# 연습
+# 연습중입니다
