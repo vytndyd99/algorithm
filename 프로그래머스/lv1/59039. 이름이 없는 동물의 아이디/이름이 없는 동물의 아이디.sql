@@ -2,4 +2,4 @@
 SELECT ANIMAL_ID
 from ANIMAL_INS
 where NAME is null
-#연습중입니다
+#연습중
