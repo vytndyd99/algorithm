@@ -7,4 +7,4 @@ on b1.BOOK_ID = b3.BOOK_ID
 where b3.SALES_DATE like "2022-01%"
 group by b1.AUTHOR_ID, b1.CATEGORY
 order by b1.AUTHOR_ID, b1.CATEGORY desc
-#Group by 연습중입니다
+#Group by 연습
