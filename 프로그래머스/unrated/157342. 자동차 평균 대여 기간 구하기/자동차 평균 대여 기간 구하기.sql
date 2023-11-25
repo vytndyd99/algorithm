@@ -4,4 +4,4 @@ from CAR_RENTAL_COMPANY_RENTAL_HISTORY
 group by CAR_ID
 having AVERAGE_DURATION >= 7
 order by AVERAGE_DURATION desc, CAR_ID desc
-#연습중임
+#연습

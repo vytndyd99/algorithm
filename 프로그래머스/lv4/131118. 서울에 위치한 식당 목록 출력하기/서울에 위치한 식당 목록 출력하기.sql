@@ -5,3 +5,4 @@ on i.REST_ID = r.REST_ID
 group by i.REST_ID
 having i.ADDRESS like "서울%"
 order by SCORE desc, i.FAVORITES desc
+#연습중

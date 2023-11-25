@@ -1,6 +1,6 @@
 -- 코드를 입력하세요
 select PRODUCT_ID, PRODUCT_NAME, PRODUCT_CD, CATEGORY, PRICE
-from FOOD_PRODUCT
-order by PRICE desc
+from FOOD_PRODUCT f
+ORDER BY PRICE DESC
 limit 1
-# 연습용중
+# 연습
